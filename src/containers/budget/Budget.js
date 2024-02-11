@@ -4,7 +4,7 @@ import { editBudget } from "./budgetSlice";
 import "./budget.css";
 
 const Budget = ({ budget }) => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const [amount, setAmount] = useState(budget.amount);
   const handleEdit = (e) => {
     e.preventDefault();

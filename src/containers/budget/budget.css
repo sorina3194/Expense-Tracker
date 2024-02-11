@@ -2,3 +2,10 @@
   display: flex;
   justify-content: space-between;
 }
+
+.category-container {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  text-align: left;
+}
