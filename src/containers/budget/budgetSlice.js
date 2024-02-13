@@ -1,4 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  addTransaction,
+  deleteTransaction,
+} from "../transaction/transactionsSlice";
 
 export const CATEGORIES = [
   "Housing",
@@ -21,11 +25,27 @@ const budgetSlice = createSlice({
   initialState: initialState,
   reducers: {
     editBudget: (state, action) => {
-      const budgetIndex = state.findIndex(budget => budget.category === action.payload.category)
-      if (budgetIndex !== -1 ) {
+      const budgetIndex = state.findIndex(
+        (budget) => budget.category === action.payload.category
+      );
+      if (budgetIndex !== -1) {
         state[budgetIndex] = action.payload;
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(addTransaction.type, (state, action) => {
+      const target = state.find(
+        (budget) => budget.category === action.payload.category
+      );
+      target.amount -= action.payload.amount;
+    });
+    builder.addCase(deleteTransaction.type, (state, action) => {
+      const target = state.find(
+        (budget) => budget.category === action.payload.category
+      );
+      target.amount += action.payload.amount;
+    });
   },
 });
 

@@ -15,7 +15,7 @@ const TransactionForm = () => {
     dispatch(
       addTransaction({
         category: category,
-        amount: amount,
+        amount: Number(amount),
         description: description,
         id: uuidv4(),
       })
