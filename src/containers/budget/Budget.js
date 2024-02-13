@@ -6,10 +6,12 @@ import "./budget.css";
 const Budget = ({ budget }) => {
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(budget.amount);
+
   const handleEdit = (e) => {
     e.preventDefault();
     dispatch(editBudget({ category: budget.category, amount: amount }));
   };
+  
   return (
     <div id="budget-container" className="m-2">
       <div id="budget-list">
