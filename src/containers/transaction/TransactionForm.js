@@ -6,9 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 const TransactionForm = () => {
   console.log(CATEGORIES);
   const dispatch = useDispatch();
-  const [ category, setCategory ] = useState(CATEGORIES[0]);
-  const [ amount, setAmount ] = useState(0);
-  const [ description, setDescription ] = useState("");
+  const [category, setCategory] = useState(CATEGORIES[0]);
+  const [amount, setAmount] = useState(0);
+  const [description, setDescription] = useState("");
 
   const handleAddingTransaction = (e) => {
     e.preventDefault();
@@ -27,10 +27,10 @@ const TransactionForm = () => {
 
   return (
     <div className="new-transaction-container">
-      <h3>New Transaction</h3>
-      <form onSubmit={handleAddingTransaction}>
-        <div className="form-wrapper">
-          <div className="category-container">
+      <form className="transaction-form" onSubmit={handleAddingTransaction}>
+        <h3>New Transaction</h3>
+        <div className="form-body">
+          <div className="category">
             <label htmlFor="category">Category</label>
             <select
               id="category"
@@ -67,8 +67,8 @@ const TransactionForm = () => {
               onChange={(e) => setDescription(e.currentTarget.value)}
             />
           </div>
+          <button>Add Transaction</button>
         </div>
-        <button>Add Transaction</button>
       </form>
     </div>
   );

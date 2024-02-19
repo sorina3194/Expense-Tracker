@@ -7,11 +7,11 @@ import Budget from "./Budget";
 const Budgets = () => {
   const budgets = useSelector(selectBudgets);
   return (
-    <ul className="container-lg ">
-      {budgets.map((budget) => (
+    <div className="container-lg">
+      {budgets.map((budget, index) => (
         <Budget budget={budget} key={budget.category} />
       ))}
-    </ul>
+    </div>
   );
 };
 

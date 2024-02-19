@@ -1,0 +1,17 @@
+.form-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+}
+.transaction-form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(208, 255, 239);
+}
+
+.new-transaction {
+  border: solid 5px blue;
+}

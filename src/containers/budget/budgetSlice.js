@@ -14,7 +14,9 @@ export const CATEGORIES = [
   "Personal",
   "Education",
   "Entertainment",
+  
 ];
+
 const initialState = CATEGORIES.map((category) => ({
   category: category,
   amount: 0,

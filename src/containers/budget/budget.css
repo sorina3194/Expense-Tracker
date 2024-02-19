@@ -1,11 +1,29 @@
 #budget-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .category-container {
   display: flex;
-  justify-content: start;
-  flex-direction: column;
-  text-align: left;
+  align-items: baseline;
+  width: 40%;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.budgetForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  padding: 10px;
+}
+
+.m-3 {
+  border-radius: 5px;
+}
+
+.updateButton {
+  border-radius: 10px;
 }
