@@ -1,3 +1,11 @@
-.landing-page-intro-container {
+.landing-page-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.landing-page-intro {
   font-family: Poppins;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }

@@ -6,10 +6,15 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="landing-page-intro-container">
-      <h2>Expense Management System</h2>
-      <p>The perfect app to add,view,edit,delete and overall keep track of your expenses</p>
-      <button onClick={() => navigate("/login")}>Get Started</button>
+    <div className="landing-page-container">
+      <div className="landing-page-intro">
+        <h2>ABACUS</h2>
+        <p>
+          The perfect Expense Management System to add,view,edit,delete and overall keep track of your
+          expenses
+        </p>
+        <button onClick={() => navigate("/login")}>Get Started</button>
+      </div>
     </div>
   );
 };

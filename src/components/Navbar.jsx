@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-
+import logo from '../img/abacus.png'
+import "./navbar.css"
 const Navbar = () => {
   const [authUser, setAuthUser] = useState(null);
 
@@ -21,7 +22,7 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <a href="/" className="abacus-logo">
-        ABACUS
+        <img id="logo" src={logo} alt='logo' />
       </a>
 
       <div className="nav-list">
