@@ -8,12 +8,12 @@ const LandingPage = () => {
   return (
     <div className="landing-page-container">
       <div className="landing-page-intro">
-        <h2>ABACUS</h2>
-        <p>
-          The perfect Expense Management System to add,view,edit,delete and overall keep track of your
-          expenses
+        <p className="name">Expense Management System</p>
+        <p className="text">
+          The perfect app to add - view - edit - delete and overall - keep track - of your
+          expenses.
         </p>
-        <button onClick={() => navigate("/login")}>Get Started</button>
+        <button id="get-started-button" onClick={() => navigate("/login")}>Get Started</button>
       </div>
     </div>
   );

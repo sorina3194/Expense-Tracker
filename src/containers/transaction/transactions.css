@@ -2,15 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 50px;
-  height: 150px;
+  flex-direction: column;
+  background-color: azure;
 }
 .transaction-form {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgb(208, 255, 239);
+  box-shadow: 2px solid black;
+  height: 350;
+  width: 350;
+  margin: auto;
+  padding: 2%;
 }
 
 .new-transaction {

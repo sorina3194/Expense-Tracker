@@ -1,11 +1,34 @@
 .landing-page-container {
   display: flex;
   justify-content: flex-end;
+  height: 600px;
 }
 
 .landing-page-intro {
-  font-family: Poppins;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  max-width: 40%;
+  min-height: 500px;
+  align-items: center;
+  color: azure;
+  font-family: Poppins;
+  font-size: 30px;
+  margin-right: 110px;
+}
+
+.name {
+  font-size: 60px;
+  text-align: center;
+  text-shadow: -3px -3px 0px rgba(222, 58, 255, 0.534);
+}
+.text {
+  text-align: center;
+}
+#get-started-button {
+  border: white;
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255);
+  color: rgba(222, 58, 255, 0.534);
+  font-size: 40px;
 }

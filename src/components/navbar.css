@@ -1,12 +1,15 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  margin: 10px;
 }
 
 .nav-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 20px;
+  font-size: 30px;
 }
 
 a {
@@ -16,10 +19,7 @@ a {
 }
 
 #logo {
-  border-radius: 20px;
-  height: 70px;
-  width: 120px;
-  opacity: 0.7;
-  margin-left: 10px;
-  margin-top: 10px;
+  border-radius: 30px;
+  height: 90px;
+  margin-top: 20px;
 }
