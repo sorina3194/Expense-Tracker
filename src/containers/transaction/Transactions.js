@@ -8,11 +8,13 @@ const Transactions = () => {
   const transactions = useSelector(selectFlatTransactions);
   console.log(transactions);
   return (
-    <ul className="container-lg ">
-      {transactions.map((transaction) => (
-        <Transaction transaction={transaction} key={transaction.id} />
-      ))}
-    </ul>
+    <div className="container-lg">
+      <div className="transactions">
+        {transactions.map((transaction) => (
+          <Transaction transaction={transaction} key={transaction.id} />
+        ))}
+      </div>
+    </div>
   );
 };
 

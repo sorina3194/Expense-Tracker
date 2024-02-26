@@ -17,7 +17,7 @@ const Transaction = ({ transaction }) => {
         <p>{transaction.category}</p>
         <div className="description">{transaction.description}</div>
       </div>
-      <button onClick={handleDelete} aria-label="Remove">
+      <button onClick={handleDelete} className="delete-transaction" aria-label="Remove">
         X
       </button>
     </li>
