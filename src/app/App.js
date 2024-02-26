@@ -8,31 +8,36 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignIn from "../components/auth/SignIn";
 import LandingPage from "../components/LandingPage";
 import SignUp from "../components/auth/SignUp";
+import Navbar from "../components/Navbar";
 
 const router = createBrowserRouter([
   {
     path: "/login",
-    element: <SignIn />
+    element: (
+      <>
+        <SignIn /> <SignUp />
+      </>
+    ),
   },
   {
     path: "/",
     element: <LandingPage />,
+  },
+  {
+    path: "/budgets",
+    element: <Budgets />,
+  },
+  {
+    path: "/transactions",
+    element: <Transactions />,
   },
 ]);
 
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router}>
-        <div className="App">
-          <div className="scroll">
-            <header className="App-header">Expense Tracker</header>
-            <Budgets />
-            <Transactions />
-          </div>
-          <TransactionForm />
-        </div>
-      </RouterProvider>
+      <Navbar />
+      <RouterProvider router={router}></RouterProvider>
     </Provider>
   );
 }
