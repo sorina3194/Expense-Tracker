@@ -1,34 +1,30 @@
 .landing-page-container {
   display: flex;
-  justify-content: flex-end;
-  height: 600px;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .landing-page-intro {
   display: flex;
+  justify-content: space-around;
   flex-direction: column;
-  justify-content: flex-end;
-  max-width: 40%;
-  min-height: 500px;
+  min-height: 600px;
   align-items: center;
-  color: azure;
-  font-family: Poppins;
-  font-size: 30px;
-  margin-right: 110px;
+  color: rgb(255, 255, 255);
 }
 
-.name {
-  font-size: 60px;
-  text-align: center;
-  text-shadow: -3px -3px 0px rgba(222, 58, 255, 0.534);
-}
 .text {
   text-align: center;
+  margin: 10px;
+  font-size: 60px;
 }
+
 #get-started-button {
   border: white;
   border-radius: 15px;
   background-color: rgb(255, 255, 255);
-  color: rgba(222, 58, 255, 0.534);
+  color: rgba(0, 0, 0, 0.534);
   font-size: 40px;
+  width: 20%;
+  padding: 10px;
 }

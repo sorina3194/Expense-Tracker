@@ -3,10 +3,10 @@
 }
 body {
   margin: 0;
-  font-family: Poppins;
+  font-family: "Courier New", Courier, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("img/abacus.jpg");
+  background-image: url("img/abacus.jpeg");
   background-size: cover;
 }
 

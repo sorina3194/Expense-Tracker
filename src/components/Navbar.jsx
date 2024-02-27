@@ -3,7 +3,7 @@ import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import TransactionForm from "../containers/transaction/TransactionForm";
 import Modal from "@material-ui/core/Modal";
-import logo from "../img/abacus.png";
+import logo from "../img/ABACUS.png";
 import "./navbar.css";
 const Navbar = () => {
   const [authUser, setAuthUser] = useState(null);
@@ -50,6 +50,8 @@ const Navbar = () => {
               onClose={handleClose}
               open={open}
               style={{
+                border: "2px solid #000",
+                boxShadow: "2px solid black",
                 height: 350,
                 width: 350,
                 margin: "auto",

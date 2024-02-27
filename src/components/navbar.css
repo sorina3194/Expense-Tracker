@@ -1,7 +1,7 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  margin: 10px 20px 0px;
+  margin: 10px 20px 100px;
 }
 
 .nav-list {
@@ -13,21 +13,19 @@
 }
 
 a {
-  margin: 10px;
-  text-decoration: none;
+  margin-left: 15px;
   color: azure;
 }
 
 #logo {
-  border-radius: 30px;
-  height: 90px;
-  margin-top: 20px;
+  border-radius: 100px;
+  height: 150px;
 }
 
 #new-transaction-button {
+  margin-left: 510px;
   border: white;
   background-color: transparent;
   color: azure;
+  border: solid rgb(255, 255, 255);
 }
-
-

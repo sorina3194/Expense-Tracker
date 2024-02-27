@@ -33,25 +33,25 @@ const TransactionForm = () => {
       <form className="transaction-form" onSubmit={handleAddingTransaction}>
         <h2
           style={{
-            backgroundColor: "white",
-            width: 600,
             height: 40,
+            width: 600,
             textAlign: "center",
             borderRadius: 10,
           }}
         >
-          Transaction details:
+          Transaction details
         </h2>
         <div className="transaction-text-container">
-          <div className="transaction-text">
-            <p className="category">Category</p>
-            <p className="date">Date</p>
-            <p className="amount">Amount</p>
-            <p className="description">Description</p>
-          </div>
+          <ul className="transaction-text">
+            <li className="category">Category</li>
+            <li className="date">Date</li>
+            <li className="amount">Amount</li>
+            <li className="description">Description</li>
+          </ul>
 
           <div className="transactions-input">
             <select
+              style={{ padding: 5 }}
               id="category"
               value={category}
               onChange={(e) => setCategory(e.currentTarget.value)}
