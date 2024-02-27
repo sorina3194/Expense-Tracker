@@ -13,8 +13,9 @@ const Transaction = ({ transaction }) => {
   return (
     <li className="new-transaction">
       <div>
-        <p>{transaction.amount}</p>
         <p>{transaction.category}</p>
+        <p>{transaction.date}</p>
+        <p>{transaction.amount}</p>
         <div className="description">{transaction.description}</div>
       </div>
       <button onClick={handleDelete} className="delete-transaction" aria-label="Remove">

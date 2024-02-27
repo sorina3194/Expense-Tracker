@@ -36,17 +36,20 @@ const Navbar = () => {
       <div className="nav-list">
         {authUser ? (
           <>
-            <a href="/budgets">Budgets</a>
-            <a href="/transactions">Transactions</a>
-            <button type="button" onClick={handleOpen}>
-              New Transaction
+            <a href="/budgets">BUDGETS</a>
+            <a href="/transactions">TRANSACTIONS</a>
+            <button
+              type="button"
+              id="new-transaction-button"
+              onClick={handleOpen}
+            >
+              NEW TRANSACTION
             </button>
             <Modal
+              className=""
               onClose={handleClose}
               open={open}
               style={{
-                border: "2px solid #000",
-                boxShadow: "2px solid black",
                 height: 350,
                 width: 350,
                 margin: "auto",

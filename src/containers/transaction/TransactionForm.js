@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addTransaction, CATEGORIES } from "./transactionsSlice";
 import { v4 as uuidv4 } from "uuid";
@@ -7,6 +7,7 @@ const TransactionForm = () => {
   console.log(CATEGORIES);
   const dispatch = useDispatch();
   const [category, setCategory] = useState(CATEGORIES[0]);
+  const [date, setDate] = useState("");
   const [amount, setAmount] = useState(0);
   const [description, setDescription] = useState("");
 
@@ -15,23 +16,41 @@ const TransactionForm = () => {
     dispatch(
       addTransaction({
         category: category,
+        date: date,
         amount: Number(amount),
         description: description,
         id: uuidv4(),
       })
     );
     setCategory(CATEGORIES[0]);
-    setDescription("");
+    setDate("");
     setAmount(0);
+    setDescription("");
   };
 
   return (
     <div className="new-transaction-container">
       <form className="transaction-form" onSubmit={handleAddingTransaction}>
-        <h3>New Transaction</h3>
-        <div className="form-body">
-          <div className="category">
-            <label htmlFor="category">Category</label>
+        <h2
+          style={{
+            backgroundColor: "white",
+            width: 600,
+            height: 40,
+            textAlign: "center",
+            borderRadius: 10,
+          }}
+        >
+          Transaction details:
+        </h2>
+        <div className="transaction-text-container">
+          <div className="transaction-text">
+            <p className="category">Category</p>
+            <p className="date">Date</p>
+            <p className="amount">Amount</p>
+            <p className="description">Description</p>
+          </div>
+
+          <div className="transactions-input">
             <select
               id="category"
               value={category}
@@ -44,9 +63,11 @@ const TransactionForm = () => {
                 </option>
               ))}
             </select>
-          </div>
-          <div className="amount">
-            <label htmlFor="amount">Amount</label>
+            <input
+              type="date"
+              onChange={(e) => setDate(e.currentTarget.value)}
+              value={date}
+            />
             <input
               id="amount"
               className="m-2"
@@ -56,9 +77,6 @@ const TransactionForm = () => {
               onChange={(e) => setAmount(e.currentTarget.value)}
               step="1"
             />
-          </div>
-          <div className="description">
-            <label htmlFor="description">Description</label>
             <input
               id="description"
               className="m-2"
@@ -67,8 +85,9 @@ const TransactionForm = () => {
               onChange={(e) => setDescription(e.currentTarget.value)}
             />
           </div>
-          <button>Add Transaction</button>
         </div>
+
+        <button className="add-transaction-button">Add Transaction</button>
       </form>
     </div>
   );

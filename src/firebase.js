@@ -1,13 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getAuth} from 'firebase/auth'
+import { getAuth } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyCLvnXXNhZe402xtIpgi3zjYTC8dM0Ud5g",
   authDomain: "expense-tracker-1fb50.firebaseapp.com",
+  databaseURL:
+    "https://expense-tracker-1fb50-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "expense-tracker-1fb50",
   storageBucket: "expense-tracker-1fb50.appspot.com",
   messagingSenderId: "930465483486",
@@ -16,4 +21,12 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 export const auth = getAuth(app);
+
+export function writeUserData(userId, name, email) {
+  const db = getDatabase();
+  const reference = ref(db, "users/" + userId);
+  set(reference, { username: name, email: email });
+}
+

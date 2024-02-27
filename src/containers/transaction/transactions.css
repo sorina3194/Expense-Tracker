@@ -1,26 +1,48 @@
-.form-body {
+.new-transaction-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  background-color: azure;
+  justify-content: center;
+  height: 100vh;
 }
 .transaction-form {
-  box-shadow: 2px solid black;
-  height: 350;
-  width: 350;
-  margin: auto;
-  padding: 2%;
-}
-
-.new-transaction {
-  display: flex;
-  justify-content: space-around;
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
-    rgba(17, 17, 26, 0.1) 0px 0px 8px;
-}
-
-.transactions {
   display: flex;
   flex-direction: column;
+  background-color: rgb(207, 233, 255);
+  border-radius: 10px;
+  font-size: 20px;
+  height: 30vh;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+}
+.transaction-text-container {
+  display: flex;
+}
+
+.add-transaction-button {
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+
+.transactions-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.transaction-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+select,
+input {
+  margin: 7px;
+}
+
+p {
+  margin: 0;
 }
