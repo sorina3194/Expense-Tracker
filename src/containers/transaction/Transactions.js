@@ -8,7 +8,7 @@ const Transactions = () => {
   const transactions = useSelector(selectFlatTransactions);
   console.log(transactions);
   return (
-    <div className="container-lg">
+    <div className="container-lg" style={{ border: "black 10px solid" }}>
       <div className="transactions">
         {transactions.map((transaction) => (
           <Transaction transaction={transaction} key={transaction.id} />

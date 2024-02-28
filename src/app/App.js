@@ -3,19 +3,20 @@ import Budgets from "../containers/budget/Budgets";
 import "./App.css";
 import { store } from "./store";
 import Transactions from "../containers/transaction/Transactions";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, useRoutes } from "react-router-dom";
 import SignIn from "../components/auth/SignIn";
 import LandingPage from "../components/LandingPage";
 import SignUp from "../components/auth/SignUp";
 import Navbar from "../components/Navbar";
-import Modal from "@material-ui/core/Modal";
 
-const router = createBrowserRouter([
+/** @type {RouteObject[]} */
+const routes = [
   {
     path: "/login",
     element: (
       <>
-        <SignIn /> <SignUp />
+        <SignIn />
+        <SignUp />
       </>
     ),
   },
@@ -31,13 +32,25 @@ const router = createBrowserRouter([
     path: "/transactions",
     element: <Transactions />,
   },
-]);
+];
+
+function Container() {
+  const appRoutes = useRoutes(routes);
+
+  return (
+    <>
+      <Navbar />
+      {appRoutes}
+    </>
+  );
+}
 
 function App() {
   return (
     <Provider store={store}>
-      <Navbar />
-      <RouterProvider router={router}></RouterProvider>
+      <BrowserRouter>
+        <Container />
+      </BrowserRouter>
     </Provider>
   );
 }

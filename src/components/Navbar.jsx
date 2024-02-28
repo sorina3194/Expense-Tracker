@@ -3,6 +3,7 @@ import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import TransactionForm from "../containers/transaction/TransactionForm";
 import Modal from "@material-ui/core/Modal";
+import { Link } from "react-router-dom";
 import logo from "../img/ABACUS.png";
 import "./navbar.css";
 const Navbar = () => {
@@ -36,8 +37,8 @@ const Navbar = () => {
       <div className="nav-list">
         {authUser ? (
           <>
-            <a href="/budgets">BUDGETS</a>
-            <a href="/transactions">TRANSACTIONS</a>
+            <Link to="/budgets">BUDGETS</Link>
+            <Link to="/transactions">TRANSACTIONS</Link>
             <button
               type="button"
               id="new-transaction-button"
@@ -57,14 +58,14 @@ const Navbar = () => {
                 margin: "auto",
               }}
             >
-              <TransactionForm />
+              <TransactionForm handleClose={handleClose} />
             </Modal>
           </>
         ) : null}
       </div>
-      <a href="/" className="abacus-logo">
+      <Link to="/" className="abacus-logo">
         <img id="logo" src={logo} alt="logo" />
-      </a>
+      </Link>
     </nav>
   );
 };

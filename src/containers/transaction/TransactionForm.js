@@ -1,36 +1,43 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTransaction, CATEGORIES } from "./transactionsSlice";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
-const TransactionForm = () => {
-  console.log(CATEGORIES);
+const TransactionForm = ({handleClose}) => {
   const dispatch = useDispatch();
-  const [category, setCategory] = useState(CATEGORIES[0]);
-  const [date, setDate] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [description, setDescription] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleAddingTransaction = (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+
+  console.error({ errors });
+
+  const handleAddingTransaction = (data) => {
     dispatch(
       addTransaction({
-        category: category,
-        date: date,
-        amount: Number(amount),
-        description: description,
+        category: data.category,
+        date: data.date,
+        amount: Number(data.amount),
+        description: data.description,
         id: uuidv4(),
       })
     );
-    setCategory(CATEGORIES[0]);
-    setDate("");
-    setAmount(0);
-    setDescription("");
+    handleClose()
+    navigate("/transactions");
   };
 
   return (
     <div className="new-transaction-container">
-      <form className="transaction-form" onSubmit={handleAddingTransaction}>
+      <form
+        className="transaction-form"
+        onSubmit={handleSubmit(handleAddingTransaction)}
+      >
         <h2
           style={{
             height: 40,
@@ -41,53 +48,101 @@ const TransactionForm = () => {
         >
           Transaction details
         </h2>
-        <div className="transaction-text-container">
-          <ul className="transaction-text">
-            <li className="category">Category</li>
-            <li className="date">Date</li>
-            <li className="amount">Amount</li>
-            <li className="description">Description</li>
-          </ul>
 
-          <div className="transactions-input">
+        <div className="transaction-text-container">
+          <div className="category-container">
+            <label htmlFor="category">CATEGORY</label>
             <select
+              name="category"
               style={{ padding: 5 }}
               id="category"
-              value={category}
-              onChange={(e) => setCategory(e.currentTarget.value)}
+              {...register("category", {
+                required: {
+                  value: true,
+                  message: "Select a category",
+                },
+              })}
             >
-              {" "}
+              <option value="">Select category</option>
               {CATEGORIES.map((c) => (
                 <option key={c} value={c}>
                   {c}
                 </option>
               ))}
             </select>
+          </div>
+
+          <div className="date-container">
+            <label htmlFor="date">DATE</label>
             <input
+              name="date"
               type="date"
-              onChange={(e) => setDate(e.currentTarget.value)}
-              value={date}
+              {...register("date", {
+                required: {
+                  value: true,
+                  message: "Select a date",
+                },
+              })}
             />
+          </div>
+
+          <div className="amount-container">
+            <label htmlFor="amount">AMOUNT</label>
             <input
+              type="number"
+              name="amount"
               id="amount"
               className="m-2"
-              type="number"
-              placeholder="0"
-              value={amount}
-              onChange={(e) => setAmount(e.currentTarget.value)}
-              step="1"
+              {...register("amount", {
+                min: { value: 1, message: "Amount should be higher than 1" },
+                valueAsNumber: true,
+                required: {
+                  value:true,
+                  message: "Amount is required and must contain a number",
+                },
+              })}
             />
+          </div>
+
+          <div className="description-container">
+            <label htmlFor="description">DESCRIPTION</label>
             <input
+              name="description"
               id="description"
               className="m-2"
               type="text"
-              value={description}
-              onChange={(e) => setDescription(e.currentTarget.value)}
+              {...register("description", {
+                required: {
+                  value: true,
+                  message: "Description is required",
+                },
+              })}
             />
           </div>
         </div>
 
-        <button className="add-transaction-button">Add Transaction</button>
+        <ErrorMessage
+          errors={errors}
+          name="category"
+          render={({ message }) => <p>{message}</p>}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="date"
+          render={({ message }) => <p>{message}</p>}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="amount"
+          render={({ message }) => <p>{message}</p>}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="description"
+          render={({ message }) => <p>{message}</p>}
+        />
+
+        <input type="submit" className="add-transaction-button" />
       </form>
     </div>
   );
