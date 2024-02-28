@@ -10,13 +10,15 @@
   background-color: rgb(255, 250, 247);
   border-radius: 10px;
   font-size: 20px;
-  height: 40vh;
+  height: 50vh;
   align-items: center;
   justify-content: space-around;
   padding: 10px;
 }
 .transaction-text-container {
   display: flex;
+  flex-direction: column;
+  width: 500px;
 }
 
 .add-transaction-button {
@@ -27,24 +29,17 @@
   padding: 10px;
 }
 
-.transactions-input {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 select,
 input {
   margin: 8px;
   color: rgb(92, 138, 141);
   border: solid rgb(92, 138, 141) 2px;
   border-radius: 5px;
+  width: 300px;
 }
 
-ul {
-  margin: 0;
-  height: 200px;
+.container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: baseline;
 }

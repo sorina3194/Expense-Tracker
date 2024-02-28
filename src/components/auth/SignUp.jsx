@@ -1,37 +1,50 @@
 import React, { useState } from "react";
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+import "./signin-up.css";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const notify = () => {
+    // Calling toast method by passing string
+    toast("User created successfully");
+  };
   const signUp = (e) => {
     e.preventDefault();
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
+        setEmail("");
+        setPassword("");
       })
       .catch((error) => {
         console.log(error);
       });
   };
   return (
-    <div className="sign-in-container">
+    <div className="sign-up-container">
       <form onSubmit={signUp}>
-        <h1>Create an account</h1>
+        <h1 className="title">Create an account</h1>
         <input
+          className="input"
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          className="input"
           type="password"
           placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Sign Up</button>
+        <button onClick={notify} className="button" type="submit">
+          Sign Up
+        </button>
       </form>
     </div>
   );

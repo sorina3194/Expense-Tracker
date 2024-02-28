@@ -1,0 +1,18 @@
+.about-us-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+  padding: 30px;
+  color: rgb(92, 138, 141);
+  background-color: rgba(255, 250, 247, 0.699);
+  font-size: 30px;
+  margin: 40px;
+}
+
+.about-us-text {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}

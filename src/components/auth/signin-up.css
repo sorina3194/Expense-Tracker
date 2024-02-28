@@ -1,0 +1,27 @@
+.sign-in-container,
+.sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  padding: 30px;
+  color: rgb(92, 138, 141);
+  background-color: rgba(255, 250, 247, 0.699);
+}
+
+.title {
+  text-align: center;
+  padding: 20px;
+  font-size: 50px;
+}
+
+.input {
+  font-size: 30px;
+  width: 500px;
+}
+
+.button {
+  color: rgb(92, 138, 141);
+  font-size: 30px;
+  border-radius: 5px;
+}

@@ -5,8 +5,9 @@ import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { toast } from "react-toastify";
 
-const TransactionForm = ({handleClose}) => {
+const TransactionForm = ({ handleClose }) => {
   const dispatch = useDispatch();
   const {
     register,
@@ -28,7 +29,8 @@ const TransactionForm = ({handleClose}) => {
         id: uuidv4(),
       })
     );
-    handleClose()
+    toast("yay");
+    handleClose();
     navigate("/transactions");
   };
 
@@ -50,7 +52,7 @@ const TransactionForm = ({handleClose}) => {
         </h2>
 
         <div className="transaction-text-container">
-          <div className="category-container">
+          <div className="container">
             <label htmlFor="category">CATEGORY</label>
             <select
               name="category"
@@ -72,7 +74,7 @@ const TransactionForm = ({handleClose}) => {
             </select>
           </div>
 
-          <div className="date-container">
+          <div className="container">
             <label htmlFor="date">DATE</label>
             <input
               name="date"
@@ -86,29 +88,31 @@ const TransactionForm = ({handleClose}) => {
             />
           </div>
 
-          <div className="amount-container">
+          <div className="container">
             <label htmlFor="amount">AMOUNT</label>
             <input
               type="number"
               name="amount"
+              placeholder="0"
               id="amount"
               className="m-2"
               {...register("amount", {
                 min: { value: 1, message: "Amount should be higher than 1" },
                 valueAsNumber: true,
                 required: {
-                  value:true,
+                  value: true,
                   message: "Amount is required and must contain a number",
                 },
               })}
             />
           </div>
 
-          <div className="description-container">
+          <div className="container">
             <label htmlFor="description">DESCRIPTION</label>
             <input
               name="description"
               id="description"
+              placeholder="Description"
               className="m-2"
               type="text"
               {...register("description", {

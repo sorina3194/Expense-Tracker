@@ -1,13 +1,17 @@
 import { Provider } from "react-redux";
-import Budgets from "../containers/budget/Budgets";
 import "./App.css";
 import { store } from "./store";
-import Transactions from "../containers/transaction/Transactions";
+import { ToastContainer } from "react-toastify";
 import { BrowserRouter, useRoutes } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import Budgets from "../containers/budget/Budgets";
+import Transactions from "../containers/transaction/Transactions";
 import SignIn from "../components/auth/SignIn";
 import LandingPage from "../components/LandingPage";
 import SignUp from "../components/auth/SignUp";
 import Navbar from "../components/Navbar";
+import Products from "../containers/Products";
+import AboutUs from "../containers/AboutUs";
 
 /** @type {RouteObject[]} */
 const routes = [
@@ -32,6 +36,14 @@ const routes = [
     path: "/transactions",
     element: <Transactions />,
   },
+  {
+    path: "/products",
+    element: <Products />
+  },
+  {
+    path: "/aboutUs",
+    element: <AboutUs />
+  }
 ];
 
 function Container() {
@@ -41,6 +53,7 @@ function Container() {
     <>
       <Navbar />
       {appRoutes}
+      <ToastContainer />
     </>
   );
 }

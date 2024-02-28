@@ -6,8 +6,12 @@ import Modal from "@material-ui/core/Modal";
 import { Link } from "react-router-dom";
 import logo from "../img/ABACUS.png";
 import "./navbar.css";
+import SignOut from "./auth/SignOut";
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
   const [authUser, setAuthUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -32,9 +36,16 @@ const Navbar = () => {
     setOpen(true);
   };
 
+  const handleSignIn = () => {
+    navigate("/login");
+  };
+
   return (
     <nav className="nav">
       <div className="nav-list">
+        <Link to="/" className="abacus-logo">
+          <img id="logo" src={logo} alt="logo" />
+        </Link>
         {authUser ? (
           <>
             <Link to="/budgets">BUDGETS</Link>
@@ -60,12 +71,26 @@ const Navbar = () => {
             >
               <TransactionForm handleClose={handleClose} />
             </Modal>
+            <Link to="/products">Products</Link>
+            <Link to="/aboutUs">About Us</Link>
+            <SignOut
+              style={{
+                color: "rgb(92, 138, 141)",
+                fontSize: 30,
+                borderRadius: 5,
+              }}
+            />
           </>
-        ) : null}
+        ) : (
+          <>
+            <Link to="/products">Products</Link>
+            <Link to="/aboutUs">About Us</Link>
+            <button className="button" onClick={handleSignIn}>
+              Sign In
+            </button>
+          </>
+        )}
       </div>
-      <Link to="/" className="abacus-logo">
-        <img id="logo" src={logo} alt="logo" />
-      </Link>
     </nav>
   );
 };
