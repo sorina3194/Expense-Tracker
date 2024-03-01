@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getBudget } from "../../containers/budget/budgetSlice";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -21,6 +23,7 @@ const SignIn = () => {
         console.log(error);
       });
   };
+  
   return (
     <div className="sign-in-container">
       <form onSubmit={signIn}>

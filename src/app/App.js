@@ -1,4 +1,4 @@
-import { Provider } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { store } from "./store";
 import { ToastContainer } from "react-toastify";
@@ -12,6 +12,9 @@ import SignUp from "../components/auth/SignUp";
 import Navbar from "../components/Navbar";
 import Products from "../containers/Products";
 import AboutUs from "../containers/AboutUs";
+import { useEffect } from "react";
+import { getBudget } from "../containers/budget/budgetSlice";
+import { selectUserId } from "../containers/usersSlice";
 
 /** @type {RouteObject[]} */
 const routes = [
@@ -38,16 +41,24 @@ const routes = [
   },
   {
     path: "/products",
-    element: <Products />
+    element: <Products />,
   },
   {
     path: "/aboutUs",
-    element: <AboutUs />
-  }
+    element: <AboutUs />,
+  },
 ];
 
 function Container() {
   const appRoutes = useRoutes(routes);
+  const dispatch = useDispatch();
+  const userId = useSelector(selectUserId);
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(getBudget());
+    }
+  }, [dispatch, userId]);
 
   return (
     <>

@@ -1,7 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth,signOut } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { getAuth, signOut } from "firebase/auth";
+import { getDatabase, onValue, ref, set, get } from "firebase/database";
+import { store } from "./app/store";
+import { editBudget } from "./containers/budget/budgetSlice";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -24,16 +26,27 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-export function writeUserData(userId, name, email) {
+export async function addBudget(userId, budget) {
   const db = getDatabase();
-  const reference = ref(db, "users/" + userId);
-  set(reference, { username: name, email: email });
+  const reference = ref(db, "users/" + userId + "/budget/" + budget.category);
+  await set(reference, budget);
 }
 
+export async function userBudget(userId, category) {
+  const db = getDatabase();
+  const budgetRef = ref(db, "users/" + userId + "/budget/" + category);
+  const res = await get(budgetRef);
+  return res.val();
+}
+
+export function onLogin() {}
+
 export function signout() {
-  signOut(auth).then(() => {
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-  });
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+    })
+    .catch((error) => {
+      // An error happened.
+    });
 }

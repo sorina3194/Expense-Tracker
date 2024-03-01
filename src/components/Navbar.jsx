@@ -8,23 +8,25 @@ import logo from "../img/ABACUS.png";
 import "./navbar.css";
 import SignOut from "./auth/SignOut";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, selectUserId } from "../containers/usersSlice";
 
 const Navbar = () => {
-  const [authUser, setAuthUser] = useState(null);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const userId = useSelector(selectUserId);
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setAuthUser(user);
+        dispatch(login(user));
       } else {
-        setAuthUser(null);
+        dispatch(logout());
       }
     });
     return () => {
       listen();
     };
-  }, []);
+  }, [dispatch]);
 
   const [open, setOpen] = React.useState(false);
 
@@ -46,7 +48,7 @@ const Navbar = () => {
         <Link to="/" className="abacus-logo">
           <img id="logo" src={logo} alt="logo" />
         </Link>
-        {authUser ? (
+        {userId ? (
           <>
             <Link to="/budgets">BUDGETS</Link>
             <Link to="/transactions">TRANSACTIONS</Link>

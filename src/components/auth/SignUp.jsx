@@ -9,7 +9,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const notify = () => {
     // Calling toast method by passing string
-    toast("User created successfully");
+    toast("User created successfully, please login");
   };
   const signUp = (e) => {
     e.preventDefault();
