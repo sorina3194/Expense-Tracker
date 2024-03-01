@@ -1,8 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  addTransaction,
-  deleteTransaction,
-} from "../transaction/transactionsSlice";
 import { selectUserId } from "../usersSlice";
 import { addBudget } from "../../firebase";
 import { userBudget } from "../../firebase";
@@ -55,18 +51,6 @@ const budgetSlice = createSlice({
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(addTransaction.type, (state, action) => {
-      const target = state.find(
-        (budget) => budget.category === action.payload.category
-      );
-      target.amount -= action.payload.amount;
-    });
-    builder.addCase(deleteTransaction.type, (state, action) => {
-      const target = state.find(
-        (budget) => budget.category === action.payload.category
-      );
-      target.amount += action.payload.amount;
-    });
     builder.addCase(editBudget.fulfilled, (state, action) => {
       const budgetIndex = state.findIndex(
         (budget) => budget.category === action.payload.category

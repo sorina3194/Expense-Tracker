@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { editBudget } from "./budgetSlice";
 import "./budget.css";
+import { selectTransactions } from "../transaction/transactionsSlice";
 
 const budgetIcons = {
   Housing: "fa-solid fa-house fa-xl",
@@ -18,21 +19,28 @@ const budgetIcons = {
 
 const Budget = ({ budget }) => {
   const dispatch = useDispatch();
+
   const [amount, setAmount] = useState(budget.amount);
+
   const iconClass = budgetIcons[budget.category];
+
+  const transactions = useSelector(selectTransactions)[budget.category];
 
   const handleEdit = (e) => {
     e.preventDefault();
     dispatch(editBudget({ category: budget.category, amount: amount }));
   };
 
+  const fundsRemaining =
+    budget.amount - transactions.reduce((acc, cur) => acc + cur.amount, 0);
+  
   return (
     <div id="budget-container" className="m-2">
       <div id="budget-list">
         <div className="category-container">
           <i className={iconClass}></i>
           <h3 className="budget-category">{budget.category}</h3>
-          <h5 className="budget-amount">Funds remaining: {budget.amount}</h5>
+          <h5 className="budget-amount">Funds remaining: {fundsRemaining}</h5>
         </div>
         <form className="budgetForm" onSubmit={handleEdit}>
           <h3>Budget:</h3>

@@ -1,9 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
-import { getDatabase, onValue, ref, set, get } from "firebase/database";
-import { store } from "./app/store";
-import { editBudget } from "./containers/budget/budgetSlice";
+import { getDatabase, ref, set, get, push, remove } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -32,10 +30,32 @@ export async function addBudget(userId, budget) {
   await set(reference, budget);
 }
 
+export async function addTransaction(userId, transaction) {
+  const db = getDatabase();
+  const reference = ref(db, "users/" + userId + "/transaction");
+  await push(reference, transaction);
+}
+
+export async function deleteTransaction(userId, transaction) {
+  const db = getDatabase();
+  const reference = ref(
+    db,
+    "users/" + userId + "/transaction/" + transaction.key
+  );
+  await remove(reference);
+}
+
 export async function userBudget(userId, category) {
   const db = getDatabase();
   const budgetRef = ref(db, "users/" + userId + "/budget/" + category);
   const res = await get(budgetRef);
+  return res.val();
+}
+
+export async function userTransactions(userId) {
+  const db = getDatabase();
+  const transactionRef = ref(db, "users/" + userId + "/transaction");
+  const res = await get(transactionRef);
   return res.val();
 }
 

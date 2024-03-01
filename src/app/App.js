@@ -15,6 +15,7 @@ import AboutUs from "../containers/AboutUs";
 import { useEffect } from "react";
 import { getBudget } from "../containers/budget/budgetSlice";
 import { selectUserId } from "../containers/usersSlice";
+import { getTransactions } from "../containers/transaction/transactionsSlice";
 
 /** @type {RouteObject[]} */
 const routes = [
@@ -57,6 +58,7 @@ function Container() {
   useEffect(() => {
     if (userId) {
       dispatch(getBudget());
+      dispatch(getTransactions())
     }
   }, [dispatch, userId]);
 

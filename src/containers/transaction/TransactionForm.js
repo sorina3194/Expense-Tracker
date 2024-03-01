@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTransaction, CATEGORIES } from "./transactionsSlice";
+import { addNewTransaction, CATEGORIES } from "./transactionsSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -21,7 +21,7 @@ const TransactionForm = ({ handleClose }) => {
 
   const handleAddingTransaction = (data) => {
     dispatch(
-      addTransaction({
+      addNewTransaction({
         category: data.category,
         date: data.date,
         amount: Number(data.amount),

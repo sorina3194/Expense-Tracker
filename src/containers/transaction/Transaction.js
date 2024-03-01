@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteTransaction } from "./transactionsSlice";
+import { removeTransaction } from "./transactionsSlice";
 
 const Transaction = ({ transaction }) => {
   const dispatch = useDispatch();
 
   const handleDelete = (e) => {
     e.preventDefault();
-    dispatch(deleteTransaction(transaction));
+    dispatch(removeTransaction(transaction));
   };
 
   return (
@@ -18,7 +18,11 @@ const Transaction = ({ transaction }) => {
         <p>{transaction.amount}</p>
         <div className="description">{transaction.description}</div>
       </div>
-      <button onClick={handleDelete} className="delete-transaction" aria-label="Remove">
+      <button
+        onClick={handleDelete}
+        className="delete-transaction"
+        aria-label="Remove"
+      >
         X
       </button>
     </li>
