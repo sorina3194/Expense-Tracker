@@ -5,7 +5,7 @@ const usersSlice = createSlice({
   initialState: { user: null },
   reducers: {
     login: (state, action) => {
-      state.user = action.payload;
+      state.user = JSON.parse(JSON.stringify(action.payload));
     },
     logout: (state, action) => {
       state.user = null;

@@ -58,7 +58,7 @@ function Container() {
   useEffect(() => {
     if (userId) {
       dispatch(getBudget());
-      dispatch(getTransactions())
+      dispatch(getTransactions());
     }
   }, [dispatch, userId]);
 

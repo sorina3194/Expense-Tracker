@@ -23,11 +23,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-
-export async function addBudget(userId, budget) {
+//TRANSACTIONS CALLS
+export async function userTransactions(userId) {
   const db = getDatabase();
-  const reference = ref(db, "users/" + userId + "/budget/" + budget.category);
-  await set(reference, budget);
+  const transactionRef = ref(db, "users/" + userId + "/transaction");
+  const res = await get(transactionRef);
+  return res.val();
 }
 
 export async function addTransaction(userId, transaction) {
@@ -45,6 +46,8 @@ export async function deleteTransaction(userId, transaction) {
   await remove(reference);
 }
 
+//BUDGET CALLS
+
 export async function userBudget(userId, category) {
   const db = getDatabase();
   const budgetRef = ref(db, "users/" + userId + "/budget/" + category);
@@ -52,11 +55,10 @@ export async function userBudget(userId, category) {
   return res.val();
 }
 
-export async function userTransactions(userId) {
+export async function addBudget(userId, budget) {
   const db = getDatabase();
-  const transactionRef = ref(db, "users/" + userId + "/transaction");
-  const res = await get(transactionRef);
-  return res.val();
+  const reference = ref(db, "users/" + userId + "/budget/" + budget.category);
+  await set(reference, budget);
 }
 
 export function onLogin() {}

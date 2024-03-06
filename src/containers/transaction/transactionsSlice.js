@@ -5,7 +5,7 @@ import {
   deleteTransaction,
   userTransactions,
 } from "../../firebase";
-import { groupBy } from "lodash";
+import { groupBy, mergeWith } from "lodash";
 
 export const CATEGORIES = [
   "Housing",
@@ -28,7 +28,7 @@ export const getTransactions = createAsyncThunk(
   async (_, thunkApi) => {
     const userId = selectUserId(thunkApi.getState());
     const response = await userTransactions(userId);
-    return response;
+    return response || {};
   }
 );
 
@@ -65,7 +65,11 @@ const transactionsSlice = createSlice({
       );
       const transactions = Object.values(action.payload);
       const transactionsByCategories = groupBy(transactions, (t) => t.category);
-      state.transactions = transactionsByCategories;
+      state.transactions = mergeWith(
+        transactionsByCategories,
+        state.transactions,
+        (newTransactions, oldTransactions) => newTransactions
+      );
     });
     builder.addCase(addNewTransaction.fulfilled, (state, action) => {
       state.transactions[action.payload.category].push(action.payload);
