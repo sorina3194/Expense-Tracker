@@ -13,6 +13,15 @@ export const CATEGORIES = [
   "Personal",
   "Education",
   "Entertainment",
+  "Savings",
+  "Donations",
+  "Insurance",
+  "Household",
+  "Childcare",
+  "Pets",
+  "Subscriptions",
+  "Taxes",
+  "Miscellaneous",
 ];
 
 const initialState = CATEGORIES.map((category) => ({

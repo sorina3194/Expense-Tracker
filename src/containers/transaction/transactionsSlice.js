@@ -17,6 +17,15 @@ export const CATEGORIES = [
   "Personal",
   "Education",
   "Entertainment",
+  "Savings",
+  "Donations",
+  "Insurance",
+  "Household",
+  "Childcare",
+  "Pets",
+  "Subscriptions",
+  "Taxes",
+  "Miscellaneous",
 ];
 
 const initialState = Object.fromEntries(
@@ -75,13 +84,19 @@ const transactionsSlice = createSlice({
       state.transactions[action.payload.category].push(action.payload);
     });
     builder.addCase(removeTransaction.fulfilled, (state, action) => {
-      state.transactions[action.payload.category] = state[
-        action.payload.category
-      ].filter((transaction) => transaction.id !== action.payload.id);
+      const existingTr = state.transactions[action.payload.category];
+      state.transactions[action.payload.category] = existingTr.filter(
+        (transaction) => transaction.id !== action.payload.id
+      );
     });
   },
 });
-
+export const selectTransactionsByMonth = (state, month) => {
+  const transactions = Object.values(state.transactions.transactions).flat();
+  return transactions.filter(
+    (transaction) => month === new Date(transaction.date).getMonth()
+  );
+};
 export const selectTransactions = (state) => state.transactions.transactions;
 export const selectFlatTransactions = (state) =>
   Object.values(state.transactions.transactions).flat();

@@ -1,29 +1,32 @@
-#budget-list {
+.budgets-container {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.budget-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: center;
-}
-
-.category-container {
-  display: flex;
-  align-items: baseline;
-  width: 40%;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.budgetForm {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 40%;
-  padding: 10px;
-}
-
-.m-3 {
-  border-radius: 5px;
+  text-align: center;
+  background-color: rgba(255, 250, 247, 0.699);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 100px;
+  color: rgb(92, 138, 141);
+  font-size: 28px;
+  width: 400px;
+  height: 500px;
 }
 
 .updateButton {
-  border-radius: 10px;
+  border: rgb(92, 138, 141);
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(92, 138, 141);
+  font-size: 20px;
+  padding: 10px;
 }

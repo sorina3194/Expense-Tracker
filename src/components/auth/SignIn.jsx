@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getBudget } from "../../containers/budget/budgetSlice";
+import "./signin-up-out.css";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ const SignIn = () => {
         console.log(error);
       });
   };
-  
+
   return (
     <div className="sign-in-container">
       <form onSubmit={signIn}>
@@ -42,7 +43,7 @@ const SignIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="button" type="submit">
+        <button className="sign-button" type="submit">
           Login
         </button>
       </form>

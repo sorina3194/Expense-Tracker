@@ -14,7 +14,15 @@ const budgetIcons = {
   Personal: "fa-solid fa-star fa-xl",
   Education: "fa-solid fa-book fa-xl",
   Entertainment: "fa-solid fa-dice fa-xl",
-  // Add more categories and icons as needed
+  Savings: "fa-solid fa-credit-card fa-xl",
+  Donations: "fa-solid fa-hand-holding-heart fa-xl",
+  Insurance: "fa-solid fa-car-burst fa-xl",
+  Household: "fa-solid fa-kitchen-set fa-xl",
+  Childcare: "fa-solid fa-children fa-xl",
+  Pets: "fa-solid fa-paw fa-xl",
+  Subscriptions: "fa-solid fa-bell fa-xl",
+  Taxes: "fa-solid fa-percent fa-xl",
+  Miscellaneous: "fa-solid fa-list-ul fa-xl",
 };
 
 const Budget = ({ budget }) => {
@@ -33,28 +41,24 @@ const Budget = ({ budget }) => {
 
   const fundsRemaining =
     budget.amount - transactions.reduce((acc, cur) => acc + cur.amount, 0);
-  
+
   return (
-    <div id="budget-container" className="m-2">
-      <div id="budget-list">
-        <div className="category-container">
-          <i className={iconClass}></i>
-          <h3 className="budget-category">{budget.category}</h3>
-          <h5 className="budget-amount">Funds remaining: {fundsRemaining}</h5>
-        </div>
-        <form className="budgetForm" onSubmit={handleEdit}>
-          <h3>Budget:</h3>
-          <input
-            className="m-3"
-            type="number"
-            placeholder="0"
-            value={amount}
-            onChange={(e) => setAmount(e.currentTarget.value)}
-            step="1"
-          />
-          <button className="updateButton">Update</button>
-        </form>
-      </div>
+    <div className="budget-card">
+      <i className={iconClass}></i>
+      <h3 className="budget-category">{budget.category}</h3>
+      <h5 className="budget-amount">Funds remaining: {fundsRemaining}</h5>
+      <form className="budgetForm" onSubmit={handleEdit}>
+        <h3>Budget:</h3>
+        <input
+          className="m-3"
+          type="number"
+          placeholder="0"
+          value={amount}
+          onChange={(e) => setAmount(e.currentTarget.value)}
+          step="1"
+        />
+        <button className="updateButton">Update</button>
+      </form>
     </div>
   );
 };

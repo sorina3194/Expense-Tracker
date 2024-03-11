@@ -20,8 +20,9 @@
   width: 500px;
 }
 
-.button {
+.sign-button {
   color: rgb(92, 138, 141);
   font-size: 30px;
+  border: rgb(92, 138, 141);
   border-radius: 5px;
 }

@@ -87,7 +87,7 @@ const Navbar = () => {
           <>
             <Link to="/products">Products</Link>
             <Link to="/aboutUs">About Us</Link>
-            <button className="button" onClick={handleSignIn}>
+            <button className="sign-button" onClick={handleSignIn}>
               Sign In
             </button>
           </>

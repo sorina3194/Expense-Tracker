@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
-import "./signin-up.css";
+import "./signin-up-out.css";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -42,7 +42,7 @@ const SignUp = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={notify} className="button" type="submit">
+        <button onClick={notify} className="sign-button" type="submit">
           Sign Up
         </button>
       </form>

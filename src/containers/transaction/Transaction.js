@@ -11,19 +11,31 @@ const Transaction = ({ transaction }) => {
   };
 
   return (
-    <li className="new-transaction">
-      <div>
-        <p>{transaction.category}</p>
-        <p>{transaction.date}</p>
-        <p>{transaction.amount}</p>
-        <div className="description">{transaction.description}</div>
+    <li className="new-transaction-card">
+      <div className="transactions-details">
+        <div className="transaction-detail">
+          <p>Category:</p>
+          <p> {transaction.category}</p>
+        </div>
+        <div className="transaction-detail">
+          <p>Amount:</p>
+          <p> {transaction.amount}</p>
+        </div>
+        <div className="transaction-detail">
+          <p>Description:</p>
+          <p> {transaction.description}</p>
+        </div>
+        <div className="transaction-detail">
+          <p>Date:</p>
+          <p>{transaction.date}</p>
+        </div>
       </div>
       <button
         onClick={handleDelete}
-        className="delete-transaction"
+        className="delete-transaction-button"
         aria-label="Remove"
       >
-        X
+        Remove Transaction
       </button>
     </li>
   );
