@@ -28,7 +28,7 @@ const budgetIcons = {
 const Budget = ({ budget }) => {
   const dispatch = useDispatch();
 
-  const [amount, setAmount] = useState(budget.amount);
+  const [amount, setAmount] = useState();
 
   const iconClass = budgetIcons[budget.category];
 
@@ -37,6 +37,7 @@ const Budget = ({ budget }) => {
   const handleEdit = (e) => {
     e.preventDefault();
     dispatch(editBudget({ category: budget.category, amount: amount }));
+    setAmount("");
   };
 
   const fundsRemaining =
@@ -52,7 +53,6 @@ const Budget = ({ budget }) => {
         <input
           className="m-3"
           type="number"
-          placeholder="0"
           value={amount}
           onChange={(e) => setAmount(e.currentTarget.value)}
           step="1"

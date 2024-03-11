@@ -14,8 +14,15 @@ import Products from "../containers/Products";
 import AboutUs from "../containers/AboutUs";
 import { useEffect } from "react";
 import { getBudget } from "../containers/budget/budgetSlice";
-import { selectUserId } from "../containers/usersSlice";
+import {
+  login,
+  logout,
+  selectIsLoading,
+  selectUserId,
+} from "../containers/usersSlice";
 import { getTransactions } from "../containers/transaction/transactionsSlice";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
 
 /** @type {RouteObject[]} */
 const routes = [
@@ -54,6 +61,7 @@ function Container() {
   const appRoutes = useRoutes(routes);
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     if (userId) {
@@ -62,6 +70,22 @@ function Container() {
     }
   }, [dispatch, userId]);
 
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(login(user));
+      } else {
+        dispatch(logout());
+      }
+    });
+    return () => {
+      listen();
+    };
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <div className="loader"></div>;
+  }
   return (
     <>
       <Navbar />

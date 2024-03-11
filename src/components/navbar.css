@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-right: 20px;
   font-size: 30px;
   width: 100vw;
-  margin: 10px 20px 100px;
+  margin: 10px 20px 10px;
+  background-color: rgba(7, 67, 82, 0.116);
 }
 
 a {
@@ -15,7 +15,7 @@ a {
 
 #logo {
   border-radius: 100px;
-  height: 150px;
+  height: 120px;
 }
 
 #new-transaction-button {

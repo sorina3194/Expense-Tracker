@@ -8,25 +8,12 @@ import logo from "../img/ABACUS.png";
 import "./navbar.css";
 import SignOut from "./auth/SignOut";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { login, logout, selectUserId } from "../containers/usersSlice";
+import { useSelector } from "react-redux";
+import {  selectUserId } from "../containers/usersSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
-  useEffect(() => {
-    const listen = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        dispatch(login(user));
-      } else {
-        dispatch(logout());
-      }
-    });
-    return () => {
-      listen();
-    };
-  }, [dispatch]);
 
   const [open, setOpen] = React.useState(false);
 
@@ -73,8 +60,6 @@ const Navbar = () => {
             >
               <TransactionForm handleClose={handleClose} />
             </Modal>
-            <Link to="/products">Products</Link>
-            <Link to="/aboutUs">About Us</Link>
             <SignOut
               style={{
                 color: "rgb(92, 138, 141)",
