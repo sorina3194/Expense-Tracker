@@ -1,14 +1,18 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { removeTransaction } from "./transactionsSlice";
+import { getDownload } from "../../storage";
 
 const Transaction = ({ transaction }) => {
   const dispatch = useDispatch();
 
   const handleDelete = (e) => {
-    e.preventDefault();
     dispatch(removeTransaction(transaction));
   };
+  const  handleReceiptDownload = async (e) => {
+    const url = await getDownload(transaction.file)
+    window.location.href = url;
+  }
 
   return (
     <li className="new-transaction-card">
@@ -29,6 +33,13 @@ const Transaction = ({ transaction }) => {
           <p>Date:</p>
           <p>{transaction.date}</p>
         </div>
+        {transaction.file ?
+        <div className="transaction-detail">
+          <p>Receipt:</p>
+          {/* <input type="file" /> */}
+          <button onClick={handleReceiptDownload}>Download Receipt</button>
+        </div> : null }
+
       </div>
       <button
         onClick={handleDelete}

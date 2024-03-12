@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
 import { getDatabase, ref, set, get, push, remove } from "firebase/database";
+import {getStorage} from "firebase/storage"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,6 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+
 //TRANSACTIONS CALLS
 export async function userTransactions(userId) {
   const db = getDatabase();
@@ -61,14 +63,13 @@ export async function addBudget(userId, budget) {
   await set(reference, budget);
 }
 
-export function onLogin() {}
 
 export function signout() {
   signOut(auth)
     .then(() => {
       // Sign-out successful.
     })
-    .catch((error) => {
-      // An error happened.
-    });
 }
+
+//Cloud Storage
+export const storage = getStorage();

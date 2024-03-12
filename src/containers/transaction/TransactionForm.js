@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addNewTransaction, CATEGORIES } from "./transactionsSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "react-toastify";
+import { uploadFile } from "../../storage";
+import { selectUserId } from "../usersSlice";
 
 const TransactionForm = ({ handleClose }) => {
   const dispatch = useDispatch();
@@ -16,22 +18,30 @@ const TransactionForm = ({ handleClose }) => {
   } = useForm();
 
   const navigate = useNavigate();
+  const userId = useSelector(selectUserId);
+  const handleAddingTransaction = async (data) => {
+    try {
+      const bucket = await uploadFile(data.file.item(0), userId);
+      dispatch(
+        addNewTransaction({
+          category: data.category,
+          date: data.date,
+          amount: Number(data.amount),
+          description: data.description,
+          file: bucket,
+          id: uuidv4(),
+        })
+      );
+      toast("yay");
+      handleClose();
+      navigate("/transactions");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  console.error({ errors });
-
-  const handleAddingTransaction = (data) => {
-    dispatch(
-      addNewTransaction({
-        category: data.category,
-        date: data.date,
-        amount: Number(data.amount),
-        description: data.description,
-        id: uuidv4(),
-      })
-    );
-    toast("yay");
-    handleClose();
-    navigate("/transactions");
+  const handleUploadReceipt = (event) => {
+    console.log(event.target.files[0]);
   };
 
   return (
@@ -119,6 +129,19 @@ const TransactionForm = ({ handleClose }) => {
                 required: {
                   value: true,
                   message: "Description is required",
+                },
+              })}
+            />
+          </div>
+          <div className="container">
+            <input
+              type="file"
+              name="file"
+              onChange={handleUploadReceipt}
+              {...register("file", {
+                required: {
+                  value: true,
+                  message: "Upload your receipt",
                 },
               })}
             />
