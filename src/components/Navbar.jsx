@@ -39,6 +39,7 @@ const Navbar = () => {
           <>
             <Link to="/budgets">BUDGETS</Link>
             <Link to="/transactions">TRANSACTIONS</Link>
+            <Link to="/reports">REPORTS</Link>
             <button
               type="button"
               id="new-transaction-button"

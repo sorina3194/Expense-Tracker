@@ -23,6 +23,7 @@ import {
 import { getTransactions } from "../containers/transaction/transactionsSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
+import Reports from "../containers/Reports";
 
 /** @type {RouteObject[]} */
 const routes = [
@@ -46,6 +47,10 @@ const routes = [
   {
     path: "/transactions",
     element: <Transactions />,
+  },
+  {
+    path: "/reports",
+    element: <Reports />,
   },
   {
     path: "/products",
