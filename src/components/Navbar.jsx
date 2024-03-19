@@ -9,7 +9,7 @@ import "./navbar.css";
 import SignOut from "./auth/SignOut";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import {  selectUserId } from "../containers/usersSlice";
+import { selectUserId } from "../containers/usersSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -30,44 +30,46 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="nav">
-      <div className="nav-list">
-        <Link to="/" className="abacus-logo">
-          <img id="logo" src={logo} alt="logo" />
-        </Link>
+    <nav>
         {userId ? (
           <>
-            <Link to="/budgets">BUDGETS</Link>
-            <Link to="/transactions">TRANSACTIONS</Link>
-            <Link to="/reports">REPORTS</Link>
-            <button
-              type="button"
-              id="new-transaction-button"
-              onClick={handleOpen}
-            >
-              NEW TRANSACTION
-            </button>
-            <Modal
-              className=""
-              onClose={handleClose}
-              open={open}
-              style={{
-                border: "2px solid #000",
-                boxShadow: "2px solid black",
-                height: 350,
-                width: 350,
-                margin: "auto",
-              }}
-            >
-              <TransactionForm handleClose={handleClose} />
-            </Modal>
-            <SignOut
-              style={{
-                color: "rgb(92, 138, 141)",
-                fontSize: 30,
-                borderRadius: 5,
-              }}
-            />
+            <label className="hamburger-menu">
+              <input type="checkbox" />
+            </label>
+            <aside className="sidebar">
+              <nav className="nav">
+                <Link to="/budgets">BUDGETS</Link>
+                <Link to="/transactions">TRANSACTIONS</Link>
+                <Link to="/reports">REPORTS</Link>
+                <button
+                  type="button"
+                  id="new-transaction-button"
+                  onClick={handleOpen}
+                >
+                  NEW TRANSACTION
+                </button>
+                <Modal
+                  className=""
+                  onClose={handleClose}
+                  open={open}
+                  style={{
+                    border: "2px solid #000",
+                    boxShadow: "2px solid black",
+                    height: 350,
+                    width: 350,
+                    margin: "auto",
+                  }}
+                >
+                  <TransactionForm handleClose={handleClose} />
+                </Modal>
+                <SignOut
+                  style={{
+                    color: "rgb(92, 138, 141)",
+                    borderRadius: 5,
+                  }}
+                />
+              </nav>
+            </aside>
           </>
         ) : (
           <>
@@ -78,7 +80,9 @@ const Navbar = () => {
             </button>
           </>
         )}
-      </div>
+        <Link to="/" className="abacus-logo">
+          <img id="logo" src={logo} alt="logo" />
+        </Link>
     </nav>
   );
 };

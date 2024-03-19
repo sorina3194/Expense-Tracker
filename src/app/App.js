@@ -24,6 +24,8 @@ import { getTransactions } from "../containers/transaction/transactionsSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import Reports from "../containers/Reports";
+import { Link } from "react-router-dom";
+
 
 /** @type {RouteObject[]} */
 const routes = [
@@ -96,6 +98,10 @@ function Container() {
       <Navbar />
       {appRoutes}
       <ToastContainer />
+      <div className="footer">
+        <Link to="/products">Products</Link>
+        <Link to="/aboutUs">About Us</Link>
+      </div>
     </>
   );
 }

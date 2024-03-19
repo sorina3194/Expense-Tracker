@@ -5,11 +5,12 @@
   min-height: 600px;
   align-items: center;
   color: rgb(255, 255, 255);
+  background-color: rgba(247, 247, 247, 0.356);
 }
 
 .text {
   text-align: center;
-  margin: 60px 20px 30px;
+  margin: 20px 30px;
   font-size: 60px;
 }
 
@@ -34,4 +35,8 @@
   position: fixed;
   bottom: 0;
   background-color: rgba(7, 67, 82, 0.116);
+}
+
+.footer a {
+  color: rgb(83, 83, 83);
 }

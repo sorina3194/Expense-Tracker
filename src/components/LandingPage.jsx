@@ -14,19 +14,18 @@ const LandingPage = () => {
         <p
           className="text"
           style={{
-            color: "grey",
+            color: "rgb(83, 83, 83)",
             textShadow: "5px 1px 2px rgb(255, 255, 255)",
             fontSize: "60px",
-            padding: "140px",
           }}
         >
           Welcome to ABACUS
           <p
             style={{
-              color: "grey",
+              color: "rgb(83, 83, 83)",
               textShadow: "5px 1px 2px rgb(255, 255, 255)",
               fontSize: "100px",
-              margin: "20px",
+              margin: "20px 50px",
             }}
           >
             THE EXPENSE MANAGEMENT SYSTEM
@@ -39,10 +38,7 @@ const LandingPage = () => {
           </button>
         )}
       </div>
-      <div className="footer">
-        <Link to="/products">Products</Link>
-        <Link to="/aboutUs">About Us</Link>
-      </div>
+  
     </div>
   );
 };
