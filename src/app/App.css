@@ -39,6 +39,23 @@
   border: 5px solid #fff;
   animation: prixClipFix 1s linear infinite;
 }
+.footer {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  background-color: rgba(7, 67, 82, 0.116);
+}
+
+.footer a {
+  color: rgb(83, 83, 83);
+}
 
 /* Keyframe animations */
 @keyframes rotate {
@@ -48,9 +65,31 @@
 }
 
 @keyframes prixClipFix {
-  0% { clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0); }
-  25% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0); }
-  50% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%); }
-  75% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%); }
-  100% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0); }
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .footer {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    font-size: 15px;
+  }
 }

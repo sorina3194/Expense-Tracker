@@ -1,19 +1,29 @@
 .landing-page-intro {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  min-height: 600px;
-  align-items: center;
+  position: fixed;
+  top: 20%;
+  right: 0;
+  left: 0;
+  bottom: 30%;
   color: rgb(255, 255, 255);
   background-color: rgba(247, 247, 247, 0.356);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .text {
-  text-align: center;
-  margin: 20px 30px;
-  font-size: 60px;
+  color: rgb(83, 83, 83);
+  text-shadow: 5px 1px 2px rgb(255, 255, 255);
+  font-size: 40px;
 }
 
+.expense-text {
+  color: rgb(83, 83, 83);
+  text-shadow: 5px 1px 2px rgb(255, 255, 255);
+  font-size: 100px;
+  margin: 20px 50px;
+}
 #get-started-button {
   border: white;
   border-radius: 15px;
@@ -24,19 +34,78 @@
   padding: 10px;
 }
 
-.footer {
-  display: flex;
-  width: 100%;
-  height: 50px;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 30px;
-  margin: 10px 5px 10px;
-  position: fixed;
-  bottom: 0;
-  background-color: rgba(7, 67, 82, 0.116);
-}
 
-.footer a {
-  color: rgb(83, 83, 83);
+@media only screen and (max-width: 1024px) {
+  .text {
+    font-size: 40px;
+  }
+  .expense-text {
+    font-size: 65px;
+
+  }
+}
+@media only screen and (max-width: 768px) {
+  .landing-page-intro {
+    top: 20%;
+    right: 0;
+  }
+
+  .text {
+    font-size: 30px;
+  }
+  .expense-text {
+    font-size: 55px;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  #get-started-button {
+    font-size: 30px;
+    width: 50%;
+  }
+
+
+}
+@media only screen and (max-width: 570px) {
+  .landing-page-intro {
+    top: 20%;
+  }
+
+  .text {
+    font-size: 27px;
+  }
+  .expense-text {
+    font-size: 40px;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  #get-started-button {
+    font-size: 30px;
+    width: 50%;
+  }
+
+}
+@media only screen and (max-width: 480px) {
+  .landing-page-intro {
+    top: 20%;
+    bottom: 30%;
+  }
+
+  .text {
+    font-size: 25px;
+  }
+  .expense-text {
+    font-size: 35px;
+    padding: 20px;
+    margin: 10px;
+  }
+  .landing-page-intro p{
+    padding: 10px;
+  }
+  #get-started-button {
+    font-size: 30px;
+    width: 50%;
+  }
+
 }

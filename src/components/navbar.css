@@ -98,15 +98,117 @@ a {
 }
 
 .sidebar {
+  position: absolute;
+  z-index: 1;
+  width: 70%;
+  height: 100%;
   transition: translate var(--animation-timing);
   translate: -100%;
   padding: 0.5rem 1rem 1rem;
   padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 5rem);
-  background-color: rgba(7, 67, 82, 0.116);
+  background-color: rgba(7, 67, 82, 0.849);
   max-width: 25rem;
-
+  height: 100%;
 }
 
 .hamburger-menu:has(input:checked) + .sidebar {
   translate: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  #logo {
+    width: 90px; /* Adjust width as needed */
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #logo {
+    position: absolute;
+    top: 1%;
+    right: 3%;
+    width: 70px; /* Adjust width as needed */
+    height: auto;
+  }
+
+  .nav {
+    margin-left: 0;
+    font-size: 20px;
+  }
+
+  .nav button {
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+
+  .hamburger-menu {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    max-width: 300px;
+    height: 100%;
+    padding: 1rem;
+    padding-top: 5rem;
+    background-color: rgba(7, 67, 82, 0.849);
+  }
+
+  .hamburger-menu:has(input:checked) + .sidebar {
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  #logo {
+    position: absolute;
+    top: 1%;
+    right: 3%;
+    width: 60px; /* Adjust width as needed */
+    height: auto;
+  }
+
+  .nav {
+    margin-left: 0;
+    font-size: 20px;
+  }
+  #new-transaction-button {
+    width: 80%;
+    text-align: center;
+    margin: 10px;
+  }
+  .nav button {
+    margin: 5px;
+  }
+
+  :root {
+    --bar-width: 50px;
+    --bar-height: 4px;
+    --hamburger-gap: 5px;
+  }
+  .hamburger-menu {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 2;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  :root {
+    --bar-width: 40px;
+    --bar-height: 4px;
+    --hamburger-gap: 5px;
+  }
+  .hamburger-menu {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 2;
+  }
 }

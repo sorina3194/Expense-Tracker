@@ -11,25 +11,9 @@ const LandingPage = () => {
   return (
     <div className="landing-page-container">
       <div className="landing-page-intro">
-        <p
-          className="text"
-          style={{
-            color: "rgb(83, 83, 83)",
-            textShadow: "5px 1px 2px rgb(255, 255, 255)",
-            fontSize: "60px",
-          }}
-        >
+        <p className="text">
           Welcome to ABACUS
-          <p
-            style={{
-              color: "rgb(83, 83, 83)",
-              textShadow: "5px 1px 2px rgb(255, 255, 255)",
-              fontSize: "100px",
-              margin: "20px 50px",
-            }}
-          >
-            THE EXPENSE MANAGEMENT SYSTEM
-          </p>
+          <p className="expense-text">THE EXPENSE MANAGEMENT SYSTEM</p>
           to keep track of your income and expenses.
         </p>
         {userId ? null : (
@@ -38,7 +22,6 @@ const LandingPage = () => {
           </button>
         )}
       </div>
-  
     </div>
   );
 };
