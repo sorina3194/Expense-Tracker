@@ -8,7 +8,7 @@ const Budgets = () => {
   const budgets = useSelector(selectBudgets);
   return (
     <>
-      <h1 className="budgets-title"> Budgets </h1>
+      <h1 className="budgets-title"> BUDGETS </h1>
       <div className="budgets-container">
         {budgets.map((budget, index) => (
           <Budget budget={budget} key={budget.category} />

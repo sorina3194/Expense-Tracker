@@ -9,6 +9,8 @@
   align-items: center;
   justify-content: center;
   color: rgb(92, 138, 141);
+  border: #e0e0e000;
+  padding: 30px;
 }
 
 .transaction-text-container,
@@ -26,21 +28,25 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.upload-container {
+  margin: 10px;
 }
 
 /* Transaction form */
 .transaction-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  text-align: center;
   background-color: rgb(255, 250, 247);
   border-radius: 10px;
-  font-size: 20px;
-  height: 50vh;
-  padding: 10px;
+  font-size: 25px;
+  padding: 15px;
 }
-
+form h2 {
+  padding: 20px;
+  font-size: 50px;
+}
 /* Buttons */
 .add-transaction-button,
 .delete-transaction-button,
@@ -48,7 +54,6 @@
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
   color: rgb(92, 138, 141);
-  font-size: 20px;
   padding: 10px;
 }
 
@@ -65,17 +70,17 @@
 .transactions-title {
   font-size: 70px;
   text-align: center;
-  margin-bottom: 50px;
+  margin: 200px 50px 0px 0px;
   color: rgb(92, 138, 141);
 }
 
 .transaction-select {
-  width: 50%;
+  width: 40%;
   height: 50px;
   font-size: 30px;
   text-align: center;
   color: rgb(92, 138, 141);
-  margin-bottom: 20px;
+  margin: 30px;
 }
 
 /* Transaction Cards */
@@ -118,25 +123,23 @@ p {
 
 @media screen and (max-width: 768px) {
   .transaction-form {
-    font-size: 16px;
-  }
-
-  .transactions-title {
-    font-size: 35px;
-    margin-bottom: 20px;
+    font-size: 15px;
   }
 
   select,
   input {
-    width: 80%;
+    width: 60%;
   }
-
+  .upload-container {
+    width: 100%;
+  }
   .transaction-select {
     text-align: center;
     color: rgb(92, 138, 141);
     margin-bottom: 20px;
     font-size: 25px;
   }
+
   .new-transaction-card {
     display: flex;
     justify-content: center;
@@ -169,8 +172,30 @@ p {
   .transactions-detail {
     width: 100%;
   }
+  .new-transaction-container {
+    display: flex;
+    align-items: center;
+    padding: 0%;
+  }
   .transaction-form {
-    font-size: 14px;
+    width: 90%;
+  }
+  form h2 {
+    font-size: 20px;
+  }
+  .transaction-form input {
+    width: 100%;
+    margin: 0;
+  }
+  .transaction-form select {
+    width: 100%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    align-items: center;
   }
 
   .transactions-title {

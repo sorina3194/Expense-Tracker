@@ -50,23 +50,13 @@ const TransactionForm = ({ handleClose }) => {
         className="transaction-form"
         onSubmit={handleSubmit(handleAddingTransaction)}
       >
-        <h2
-          style={{
-            height: 40,
-            width: 600,
-            textAlign: "center",
-            borderRadius: 10,
-          }}
-        >
-          Transaction details
-        </h2>
+        <h2>Transaction details</h2>
 
         <div className="transaction-text-container">
           <div className="container">
             <label htmlFor="category">CATEGORY</label>
             <select
               name="category"
-              style={{ padding: 5 }}
               id="category"
               {...register("category", {
                 required: {
@@ -104,8 +94,6 @@ const TransactionForm = ({ handleClose }) => {
               type="number"
               name="amount"
               placeholder="0"
-              id="amount"
-              className="m-2"
               {...register("amount", {
                 min: { value: 1, message: "Amount should be higher than 1" },
                 valueAsNumber: true,
@@ -121,9 +109,7 @@ const TransactionForm = ({ handleClose }) => {
             <label htmlFor="description">DESCRIPTION</label>
             <input
               name="description"
-              id="description"
               placeholder="Description"
-              className="m-2"
               type="text"
               {...register("description", {
                 required: {
@@ -133,7 +119,7 @@ const TransactionForm = ({ handleClose }) => {
               })}
             />
           </div>
-          <div className="container">
+          <div className="upload-container">
             <input
               type="file"
               name="file"
