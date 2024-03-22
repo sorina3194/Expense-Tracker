@@ -10,12 +10,13 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import { selectBudgets } from "./budget/budgetSlice";
 import { selectFlatTransactions } from "./transaction/transactionsSlice";
 import { filter } from "lodash";
 
-const calculate = (budgets, transactions) => {
+const calculateBudgetGraph = (budgets, transactions) => {
   const data = budgets.map((budget) => {
     const chart = {
       name: budget.category,
@@ -27,40 +28,85 @@ const calculate = (budgets, transactions) => {
     };
     return chart;
   });
-  console.log(data);
   const filteredData = data.filter(
     (chart) => chart.budget !== 0 && chart.transaction !== 0
   );
-  console.log(filteredData);
   return filteredData;
 };
 
+const calculateTransactionsByMonth = (transactions) => {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const graphData = months.map((month, monthIndex) => ({
+    name: month,
+    moneySpent: transactions
+      .filter(
+        (transaction) => monthIndex === new Date(transaction.date).getMonth()
+      )
+      .map((transaction) => transaction.amount)
+      .reduce((previous, current) => previous + current, 0),
+  }));
+  return graphData;
+};
 export default function Reports() {
   const budgets = useSelector(selectBudgets);
   const transactions = useSelector(selectFlatTransactions);
-  const data = calculate(budgets, transactions);
+  const data = calculateBudgetGraph(budgets, transactions);
+  const data2 = calculateTransactionsByMonth(transactions);
   return (
     <div className="chart">
-      <BarChart
-        width={2000}
-        height={500}
-        data={data}
-        margin={{
-          top: 20,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <XAxis axisLine={false} interval={1} scale="band" xAxisId="quarter" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="transactions" fill="#ff545c" />
-        <Bar dataKey="budget" fill="#13ffb0" />
-      </BarChart>
+      <ResponsiveContainer width="80%" height="40%" aspect={11.0 / 2.0}>
+        <BarChart
+          data={data}
+          margin={{
+            top: 20,
+            right: 30,
+            left: 20,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <XAxis />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="transactions" fill="#ff545c" />
+          <Bar dataKey="budget" fill="#117554" />
+        </BarChart>
+      </ResponsiveContainer>
+      <ResponsiveContainer width="60%" height="40%" aspect={11.0 / 2.0}>
+        <BarChart
+          width={1800}
+          height={500}
+          data={data2}
+          margin={{
+            right: 30,
+            left: 20,
+            bottom: 55,
+          }}
+        >
+          <CartesianGrid strokeDasharray="2 2" />
+          <XAxis dataKey="name" />
+          <XAxis />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="moneySpent" fill="#117554" />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }
