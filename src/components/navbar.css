@@ -28,7 +28,15 @@ a {
 .nav button {
   margin-bottom: 10px;
 }
-
+.sign-in-button {
+  position: absolute;
+  top: 60px;
+  right: 40px;
+    color: rgb(92, 138, 141);
+  font-size: 30px;
+  border: rgb(92, 138, 141);
+  border-radius: 5px;
+}
 *,
 *::after,
 *::before {

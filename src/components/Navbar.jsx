@@ -57,10 +57,12 @@ const Navbar = () => {
                   height: 350,
                   width: 350,
                   margin: "auto",
-                  bottom :"30%"
+                  bottom: "30%",
                 }}
               >
-                <TransactionForm handleClose={handleClose} />
+                <div>
+                  <TransactionForm handleClose={handleClose} />
+                </div>
               </Modal>
               <SignOut
                 style={{
@@ -73,9 +75,7 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          <Link to="/products">Products</Link>
-          <Link to="/aboutUs">About Us</Link>
-          <button className="sign-button" onClick={handleSignIn}>
+          <button className="sign-in-button" onClick={handleSignIn}>
             Sign In
           </button>
         </>

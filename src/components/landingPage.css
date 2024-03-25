@@ -1,16 +1,16 @@
 .landing-page-intro {
   position: fixed;
-  top: 20%;
+  top: 30%;
   right: 0;
   left: 0;
-  bottom: 30%;
   color: rgb(255, 255, 255);
   background-color: rgba(247, 247, 247, 0.356);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2%;
 }
-
 
 .text {
   color: rgb(83, 83, 83);
@@ -24,16 +24,21 @@
   font-size: 100px;
   margin: 20px 50px;
 }
+span {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
 #get-started-button {
   border: white;
   border-radius: 15px;
   background-color: rgb(255, 255, 255);
   color: rgba(0, 0, 0, 0.534);
-  font-size: 40px;
+  font-size: 20px;
   width: 20%;
   padding: 10px;
 }
-
 
 @media only screen and (max-width: 1024px) {
   .text {
@@ -41,7 +46,6 @@
   }
   .expense-text {
     font-size: 65px;
-
   }
 }
 @media only screen and (max-width: 768px) {
@@ -63,8 +67,6 @@
     font-size: 30px;
     width: 50%;
   }
-
-
 }
 @media only screen and (max-width: 570px) {
   .landing-page-intro {
@@ -84,7 +86,6 @@
     font-size: 30px;
     width: 50%;
   }
-
 }
 @media only screen and (max-width: 480px) {
   .landing-page-intro {
@@ -100,12 +101,11 @@
     padding: 20px;
     margin: 10px;
   }
-  .landing-page-intro p{
+  .landing-page-intro p {
     padding: 10px;
   }
   #get-started-button {
     font-size: 30px;
     width: 50%;
   }
-
 }

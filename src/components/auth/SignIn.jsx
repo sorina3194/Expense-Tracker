@@ -15,7 +15,6 @@ const SignIn = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
         setEmail("");
         setPassword("");
         navigate("/");
@@ -26,8 +25,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className="sign-in-container">
-      <form onSubmit={signIn}>
+    <div >
+      <form className="sign-in-container" onSubmit={signIn}>
         <h1 className="title">Log in to your account</h1>
         <input
           className="input"
@@ -43,7 +42,7 @@ const SignIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="sign-button" type="submit">
+        <button className="login-button" type="submit">
           Login
         </button>
       </form>

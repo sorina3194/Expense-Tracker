@@ -1,12 +1,15 @@
 .sign-in-container,
 .sign-up-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 300px;
-  padding: 30px;
+  height: 400px;
   color: rgb(92, 138, 141);
   background-color: rgba(255, 250, 247, 0.699);
+  margin-bottom: 40px;
+  border-radius: 20px;
+  width: 800px;
 }
 
 .title {
@@ -17,12 +20,23 @@
 
 .input {
   font-size: 30px;
-  width: 500px;
+  width: 600px;
 }
 
-.sign-button {
+.sign-button,
+.login-button {
+  margin: 20px;
   color: rgb(92, 138, 141);
   font-size: 30px;
   border: rgb(92, 138, 141);
   border-radius: 5px;
+  background-color: rgba(221, 221, 221, 0.699);
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
 }

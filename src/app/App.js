@@ -32,10 +32,10 @@ const routes = [
   {
     path: "/login",
     element: (
-      <>
+      <div className="login-container">
         <SignIn />
         <SignUp />
-      </>
+      </div>
     ),
   },
   {
@@ -80,7 +80,7 @@ function Container() {
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(login(user));
+        dispatch(login(JSON.parse(JSON.stringify(user))));
       } else {
         dispatch(logout());
       }
