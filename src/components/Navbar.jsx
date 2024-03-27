@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import React from "react";
 import TransactionForm from "../containers/transaction/TransactionForm";
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 import { Link } from "react-router-dom";
 import logo from "../img/ABACUS.png";
 import "./navbar.css";
