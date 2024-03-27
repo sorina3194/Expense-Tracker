@@ -7,13 +7,15 @@
   color: rgb(92, 138, 141);
   background-color: rgba(255, 250, 247, 0.699);
   font-size: 30px;
-  margin: 10% 10% 10% 10%;
+  margin: 10% 10% 5%;
+  border-radius: 20px;
   border-radius: 20px;
 }
 
 .about-us-text {
   text-align: center;
-  margin: 50px;
+  margin: 20px;
+  font-size: 20px;
 }
 @media screen and (max-width: 768px) {
   .about-us-container {

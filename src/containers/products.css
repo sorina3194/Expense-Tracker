@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: stretch;
-  margin: 10% 5% 0% 5%;
+  margin: 10% 10% 5%;
 }
 .card-group {
   display: flex;
@@ -15,16 +15,16 @@
   border: 1px solid #e0e0e0;
   border-radius: 20px;
   width: 100px;
-  height: 300px;
+  height: 250px;
   margin: 30px;
   color: rgb(92, 138, 141);
-  font-size: 28px;
+  font-size: 20px;
+  padding: 10px;
 }
 
 .card-title {
   font-size: 40px;
   padding: 20px;
-  margin-bottom: 30px;
 }
 @media screen and (max-width: 1440px) {
   .products-container {

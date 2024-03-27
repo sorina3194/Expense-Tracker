@@ -4,30 +4,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 400px;
   color: rgb(92, 138, 141);
   background-color: rgba(255, 250, 247, 0.699);
   margin-bottom: 40px;
   border-radius: 20px;
-  width: 800px;
+  width: 500px;
 }
 
 .title {
   text-align: center;
   padding: 20px;
-  font-size: 50px;
+  font-size: 35px;
 }
 
 .input {
-  font-size: 30px;
-  width: 600px;
+  font-size: 20px;
 }
 
 .sign-button,
 .login-button {
   margin: 20px;
   color: rgb(92, 138, 141);
-  font-size: 30px;
+  font-size: 25px;
   border: rgb(92, 138, 141);
   border-radius: 5px;
   background-color: rgba(221, 221, 221, 0.699);
